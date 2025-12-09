@@ -15,17 +15,21 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // Create the scene programmatically instead of loading from .sks
-            let scene = GameScene(size: view.bounds.size)
-            scene.scaleMode = .aspectFill
+            // Load settings before starting
+            GameManager.shared.loadSettings()
+            
+            // Start with the menu scene
+            let menuScene = MenuScene(size: view.bounds.size)
+            menuScene.scaleMode = .aspectFill
             
             // Present the scene
-            view.presentScene(scene)
+            view.presentScene(menuScene)
             
             view.ignoresSiblingOrder = true
             
-            view.showsFPS = true
-            view.showsNodeCount = true
+            // Disable debug info for release
+            view.showsFPS = false
+            view.showsNodeCount = false
         }
     }
 
