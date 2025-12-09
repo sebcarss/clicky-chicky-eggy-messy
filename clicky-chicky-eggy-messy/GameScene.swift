@@ -467,14 +467,6 @@ class GameScene: SKScene {
     }
     
     func createYoshiEgg(type: EggType = .normal) -> SKNode {
-        // For normal eggs, try to load image first
-        if type == .normal, let eggUIImage = UIImage(named: "Egg") {
-            let eggTexture = SKTexture(image: eggUIImage)
-            let sprite = SKSpriteNode(texture: eggTexture)
-            sprite.size = CGSize(width: eggWidth, height: eggHeight)
-            return sprite
-        }
-        
         // Create a Yoshi-style egg programmatically with type-specific colors
         let eggPath = CGMutablePath()
         let width = eggWidth
